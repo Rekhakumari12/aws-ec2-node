@@ -11,7 +11,7 @@ const postUser = async(req, res) => {
   if(error) return res.status(400).send({ error: error.details[0].message})
   //if user alredy exist
   let user = await User.findOne({ email: req.body.email })
-  if(user) return res.status(400).send({ error: "user already exist" })
+  if(user) return res.status(400).send({ error: "User already exist" })
 
   user = new User(_.pick(req.body, ['name', 'email']))
   await user.save()
